@@ -36,7 +36,9 @@ test_labels.csv
 The class name to ID mapping file should contain one mapping per line.
 Each line should use the following format:
 ```
-class_name,id
+staff,0
+lyrics,1
+emprty_staff,2
 ```
 
 My class file:
