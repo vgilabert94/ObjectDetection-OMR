@@ -2,11 +2,12 @@
 
 Im going to train Keras-RetinaNET model to detect objets in handwritten music documents. 
 
-I was using Google Colab, you can follow in: "RetinaNET Keras.ipynb"
+I was using Google Colab connected to My Google Drive [Google Drive](https://drive.google.com/drive/folders/1oBDuIsCN0bmCj0MlGA7CfsqMHOKyHq8p) to store data. You can follow the installation, traning, convert model and evaluation in: "RetinaNET Keras.ipynb".
+The annotation procces I used MATLAB Image Labeler and converting to CSV files with python script.
 
 ### Installation RetinaNET
 
-I use the RetinaNET model implementated in keras. For use RetinaNET-Keras, follows the steps that they provide in his repository:
+I use the RetinaNET model implementated in keras. For install correctly RetinaNET-Keras, follows the steps that they provide in his repository:
 
 1) Clone this repository. (https://github.com/fizyr/keras-retinanet)
 2) Ensure numpy is installed using `pip install numpy`
