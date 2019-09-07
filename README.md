@@ -1,5 +1,6 @@
 # Object Detection of handwritten music documents using deep learning (RetinaNET)
 
+Im going to train a model to detect objets in handwritten music documents. 
 
 I used Anaconda with an enviorment named retina. Enter on this enviorment: `activate retina` and place ourselves in the folder that we are going to work with `cd C:/tfg`. In this folfer im going to install RetinaNET.
 
@@ -36,18 +37,46 @@ Each line should use the following format:
 ```
 class_name,id
 ```
-For example:
-```
-staff,0
-lyrics,1
-empty_staff,2
-```
+
 My class file:
 classes.csv
 
 
 ### Anchor optimization
 
-The object that want to detect In some cases, the default anchor configuration is not suitable for detecting objects in your dataset, for example, if your objects are smaller than the 32x32px (size of the smallest anchors). In this case, it might be suitable to modify the anchor configuration, this can be done automatically by following the steps in the [anchor-optimization](https://github.com/martinzlocha/anchor-optimization/) repository. To use the generated configuration check [here](https://github.com/fizyr/keras-retinanet-test-data/blob/master/config/config.ini) for an example config file and then pass it to `train.py` using the `--config` parameter.
+My annotated objects are very long (aspect ratio). we can't use the predefined anchor boxes. I need to optimize.
+This can be done automatically by following the steps in the [anchor-optimization](https://github.com/martinzlocha/anchor-optimization/) repository. 
+
+When I have the optimization anchors boxes values, I created a config.ini file with this values.
+Path: config/config.ini
 
 
+### Results
+
+Some examples using retinanet-evaluate with IoU=0.5 and IoU=0.7: 
+
+#### IoU=0.5
+
+267 instances of class staff with average precision: 0.9915
+264 instances of class lyrics with average precision: 0.8005
+29 instances of class empty_staff with average precision: 0.8276
+mAP using the weighted average of precisions among classes: 0.8930
+mAP: 0.8732
+
+#### IoU=0.7
+
+267 instances of class staff with average precision: 0.9090
+264 instances of class lyrics with average precision: 0.5846
+29 instances of class empty_staff with average precision: 0.8276
+mAP using the weighted average of precisions among classes: 0.7519
+mAP: 0.7737
+
+#### Images output
+
+Green= GT ; Red = staff ; orange = lyrics ; blue = empty_staff
+
+<p align="center">
+  <img src="https://github.com/vgilabert94/ObjectDetection-OMR/blob/master/results/11.png" width="600" height="400" alt="Example result of RetinaNet on MS COCO"/>
+  <img src="https://github.com/vgilabert94/ObjectDetection-OMR/blob/master/results/40.png" width="600" height="400" alt="Example result of RetinaNet on MS COCO"/>
+  <img src="https://github.com/vgilabert94/ObjectDetection-OMR/blob/master/results/44.png" width="600" height="400" alt="Example result of RetinaNet on MS COCO"/>
+</p>
