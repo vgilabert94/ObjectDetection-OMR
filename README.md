@@ -55,19 +55,24 @@ Path: config/config.ini
 
 
 ### Traning
+```
 retinanet-train --config config/config.ini --tensorboard-dir tensorboard/ --compute-val-loss --batch-size 1 --weights resnet50_coco_best_v2.1.0.h5 --epochs 30 --steps 3017 csv train_labels.csv classes.csv 
-
+```
 
 ### Results
 
 First of all, after evaluate model we have to convert to inference model:
+```
 retinanet-convert-model snapshots/resnet50_csv_30.h5 snapshots/resnet50_MODEL.h5 --config config/config.ini
-
+```
 
 Using retinanet-evaluate with the test data (test_labels.csv). I have this result: 
 
 #### IoU=0.5
+```
 retinanet-evaluate --iou-threshold 0.5 --score-threshold 0.8 --save-path results/ csv test_labels.csv classes.csv snapshots/resnet50_MODEL.h5
+```
+
 ```
 267 instances of class staff with average precision: 0.9915
 264 instances of class lyrics with average precision: 0.8005
@@ -77,7 +82,9 @@ mAP: 0.8732
 ```
 
 #### IoU=0.7
+```
 retinanet-evaluate --iou-threshold 0.7 --score-threshold 0.8 --save-path results/ csv test_labels.csv classes.csv snapshots/resnet50_MODEL.h5
+```
 
 ```
 267 instances of class staff with average precision: 0.9090
