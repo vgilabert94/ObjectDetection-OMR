@@ -1,6 +1,6 @@
 # Object Detection of handwritten music documents using deep learning (RetinaNET)
 
-Im going to train Keras-RetinaNET model to detect objets in handwritten music documents. 
+I'm going to train Keras-RetinaNET model to detect objets in handwritten music documents in the field of Optical Music Recognition. 
 
 I was using Google Colab connected to My [Google Drive](https://drive.google.com/drive/folders/1oBDuIsCN0bmCj0MlGA7CfsqMHOKyHq8p) to store data. You can follow the installation, traning, convert model and evaluation in: "RetinaNET Keras.ipynb".
 The annotation procces I used MATLAB Image Labeler and converting to CSV files with python script.
