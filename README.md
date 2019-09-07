@@ -1,8 +1,8 @@
 # Object Detection of handwritten music documents using deep learning (RetinaNET)
 
-Im going to train a model to detect objets in handwritten music documents. 
+Im going to train Keras-RetinaNET model to detect objets in handwritten music documents. 
 
-I used Anaconda with an enviorment named retina. Enter on this enviorment: `activate retina` and place ourselves in the folder that we are going to work with `cd C:/tfg`. In this folfer im going to install RetinaNET.
+I was using Google Colab, you can follow in: "RetinaNET Keras.ipynb"
 
 ### Installation RetinaNET
 
@@ -56,21 +56,22 @@ Path: config/config.ini
 Some examples using retinanet-evaluate with IoU=0.5 and IoU=0.7: 
 
 #### IoU=0.5
-
+```
 267 instances of class staff with average precision: 0.9915
 264 instances of class lyrics with average precision: 0.8005
 29 instances of class empty_staff with average precision: 0.8276
 mAP using the weighted average of precisions among classes: 0.8930
 mAP: 0.8732
+```
 
 #### IoU=0.7
-
+```
 267 instances of class staff with average precision: 0.9090
 264 instances of class lyrics with average precision: 0.5846
 29 instances of class empty_staff with average precision: 0.8276
 mAP using the weighted average of precisions among classes: 0.7519
 mAP: 0.7737
-
+```
 #### Images output
 
 Green= GT ; Red = staff ; orange = lyrics ; blue = empty_staff
