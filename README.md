@@ -2,19 +2,20 @@
 
 I'm going to train Keras-RetinaNET model to detect objets in handwritten music documents in the field of Optical Music Recognition. 
 
-I was using Google Colab connected to My [Google Drive](https://drive.google.com/drive/folders/1oBDuIsCN0bmCj0MlGA7CfsqMHOKyHq8p) to store data. You can follow the installation, traning, convert model and evaluation in: "RetinaNET Keras.ipynb".
-The annotation procces I used MATLAB Image Labeler and converting to CSV files with python script.
+I was using Google Colab connected to My [Google Drive](https://drive.google.com/drive/folders/1oBDuIsCN0bmCj0MlGA7CfsqMHOKyHq8p) to store data. You can follow the installation, training, convert model and evaluation in: "RetinaNET Keras.ipynb".
+In the annotation procces I used MATLAB Image Labeler and to convert to CSV files, python scripts.
 
 ### Installation RetinaNET
 
-I use the RetinaNET model implementated in keras. For install correctly RetinaNET-Keras, follows the steps that they provide in his repository:
+I use the RetinaNET model implementated in keras. To install correctly RetinaNET-Keras, you have to follow the steps that they provide in their repository:
 
 1) Clone this repository. (https://github.com/fizyr/keras-retinanet)
 2) Ensure numpy is installed using `pip install numpy`
 3) In the repository, execute `pip install . --user`
 4) Run this command to compile Cython code: `python setup.py build_ext --inplace` 
 
-### Annotations format
+### Annotations 
+mat
 The CSV file with annotations should contain one annotation per line.
 Images with multiple bounding boxes should use one row per bounding box.
 Note that indexing for pixel values starts at 0.
@@ -29,8 +30,7 @@ add an annotation where `x1`, `y1`, `x2`, `y2` and `class_name` are all empty:
 path/to/image.jpg,,,,,
 ```
 My annotations files:
-train_labels.csv
-test_labels.csv
+train_labels.csv / test_labels.csv
 
 ### Class mapping format
 The class name to ID mapping file should contain one mapping per line.
@@ -47,10 +47,10 @@ classes.csv
 
 ### Anchor optimization
 
-My annotated objects are very long (aspect ratio). we can't use the predefined anchor boxes. I need to optimize.
+My annotated objects are very large (aspect ratio). I can't use the predefined anchor boxes, I need to optimize them.
 This can be done automatically by following the steps in the [anchor-optimization](https://github.com/martinzlocha/anchor-optimization/) repository. 
 
-When I have the optimization anchors boxes values, I created a config.ini file with this values.
+When I have the optimization anchors boxes values, I created a config.ini file with these values.
 Path: config/config.ini
 
 
@@ -61,12 +61,12 @@ retinanet-train --config config/config.ini --tensorboard-dir tensorboard/ --comp
 
 ### Results
 
-First of all, after evaluate model we have to convert to inference model:
+First of all, after evaluating the model I have to convert to inference model:
 ```
 retinanet-convert-model snapshots/resnet50_csv_30.h5 snapshots/resnet50_MODEL.h5 --config config/config.ini
 ```
 
-Using retinanet-evaluate with the test data (test_labels.csv). I have this result: 
+Using retinanet-evaluate with the test data (test_labels.csv). I obtain this results: 
 
 #### IoU=0.5
 ```
@@ -93,8 +93,8 @@ retinanet-evaluate --iou-threshold 0.7 --score-threshold 0.8 --save-path results
 mAP using the weighted average of precisions among classes: 0.7519
 mAP: 0.7737
 ```
-#### Images output
 
+#### Output images
 Green= GT ; Red = staff ; orange = lyrics ; blue = empty_staff
 
 <p align="center">
